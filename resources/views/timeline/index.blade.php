@@ -16,7 +16,6 @@
                     </div>
                     
                     <div class="card-body">
-                        
                         <div class="list-group">
                             @foreach ($timelines as $t)
                                 <a href="" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#addChildTimeline-{{ $t->id }}">

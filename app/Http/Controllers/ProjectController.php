@@ -63,6 +63,6 @@ class ProjectController extends Controller
 
         $project->delete();
         
-        return redirect()->route('project.show', $project->id)->withStatus('Project successfully created.');
+        return redirect()->route('home')->withStatus('Project successfully created.');
     }
 }
