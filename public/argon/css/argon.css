@@ -20992,3 +20992,8 @@ pre > code.highlight {
   margin-left: 1rem;
 }
 
+.nav-link.active {
+  color: rgba(82, 82, 255, 0.9) !important;
+  background-color: rgba(82, 82, 255, 0.1);
+}
+
