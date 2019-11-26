@@ -71,19 +71,25 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link{{ Request::is('project/'.$project->id) ? ' active' : '' }}" href="{{ route('project.show', $project->id) }}">
-                        <i class="ni ni-tv-2 text-primary"></i> Project Overview
+                        <i class="fa fa-home{{ Request::is('project/'.$project->id) ? ' text-primary' : '' }}"></i> Project Overview
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link{{ Request::is('project/*/contributor') ? ' active' : '' }}" href="{{ route('contributor.index', $project->id) }}">
-                        <i class="fa fa-users text-primary"></i> Contributors
+                        <i class="fa fa-users{{ Request::is('project/*/contributor') ? ' text-primary' : '' }}"></i> Contributors
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link{{ Request::is('project/*/timeline') ? ' active' : '' }}" href="{{ route('timeline.index', $project->id) }}">
-                        <i class="fa fa-project-diagram text-primary"></i> Timelines
+                    <a class="nav-link{{ Request::is('project/*/timeline*') ? ' active' : '' }}" href="{{ route('timeline.index', $project->id) }}">
+                        <i class="fa fa-project-diagram{{ Request::is('project/*/timeline*') ? ' text-primary' : '' }}"></i> Timelines
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="fa fa-cog"></i> Settings
                     </a>
                 </li>
                 

@@ -57,14 +57,12 @@ class ProjectTimelineController extends Controller
         return redirect()->route('timeline.index', $id)->withStatus('Timeline created successfully');
     }
 
-    public function show($id, $timeline_id)
-    {
-        //
-    }
-
     public function edit($id, $timeline_id)
     {
-        //
+        $project = Project::findOrFail($id);
+        $timeline = ProjectTimeline::findOrFail($timeline_id);
+
+        return view('timeline.edit', compact('project', 'timeline'));
     }
 
     public function update(Request $request, $id, $timeline_id)
@@ -78,6 +76,6 @@ class ProjectTimelineController extends Controller
 
         $timeline->delete();
 
-        return redirect()->route('timeline.index', $id)->withStatus('Timeline created successfully');
+        return redirect()->route('timeline.index', $id)->withStatus('Timeline deleted successfully');
     }
 }
