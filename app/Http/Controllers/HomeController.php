@@ -24,7 +24,8 @@ class HomeController extends Controller
     public function index()
     {
         $projects = Project::all();
-        
-        return view('home', compact('projects'));
+        $my_projects = auth()->user()->contributes;
+
+        return view('home', compact('projects', 'my_projects'));
     }
 }

@@ -1,11 +1,11 @@
-@extends('layouts.app', ['title' => __('User Group')])
+@extends('layouts.landing', ['title' => __('User Group')])
 
 @section('content')
-    @include('layouts.headers.title', ['title' => 'List of Groups'])
+    @include('layouts.headers.title-landing', ['title' => 'List of Groups'])
 
     <div class="container-fluid mt--7">
-        <div class="row">
-            <div class="col">
+        <div class="row justify-content-center">
+            <div class="col-xl-8">
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
