@@ -88,8 +88,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="fa fa-cog"></i> Settings
+                    <a class="nav-link{{ Request::is('project/*/settings') ? ' active' : '' }}" href="{{ route('project.settings', $project->id) }}">
+                        <i class="fa fa-cog{{ Request::is('project/*/settings') ? ' text-primary' : '' }}"></i> Settings
                     </a>
                 </li>
                 

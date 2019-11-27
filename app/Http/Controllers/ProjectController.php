@@ -65,4 +65,11 @@ class ProjectController extends Controller
         
         return redirect()->route('home')->withStatus('Project successfully created.');
     }
+
+    public function settings($id)
+    {
+        $project = Project::findOrFail($id);
+        
+        return view('project.settings', compact('project'));
+    }
 }

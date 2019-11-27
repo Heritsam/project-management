@@ -4,8 +4,8 @@
     @include('layouts.headers.title-landing', ['title' => 'New Project'])
 
     <div class="container mt--7">
-        <div class="row">
-            <div class="col-xl-12 order-xl-1">
+        <div class="row justify-content-center">
+            <div class="col-xl-8 order-xl-1">
                 <div class="card bg-secondary shadow-sm">
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
@@ -40,14 +40,7 @@
                                         <div class="form-group{{ $errors->has('date_start') ? ' has-danger' : '' }}">
                                             <label class="form-control-label" for="date_start">Date Start</label>
 
-                                            <div class="input-group input-group-alternative">
-                                                <input type="text" name="date_start" id="date_start" class="datepicker form-control form-control-alternative{{ $errors->has('date_start') ? ' is-invalid' : '' }}" placeholder="Select date" value="{{ old('date_start') }}" data-date-format="yyyy-mm-dd" required autofocus>
-
-                                                <div class="input-group-append">
-                                                    <div id="dateStartNow" class="btn btn-link">Now</div>
-                                                </div>
-                                            </div>
-                                            
+                                            <input type="date" name="date_start" id="date_start" class="form-control form-control-alternative{{ $errors->has('date_start') ? ' is-invalid' : '' }}" value="{{ old('date_start') }}" required>
         
                                             @if ($errors->has('date_start'))
                                                 <span class="invalid-feedback" role="alert">
@@ -61,17 +54,8 @@
                                         <div class="form-group{{ $errors->has('date_due') ? ' has-danger' : '' }}">
                                             <label class="form-control-label" for="date_due">Date Due</label>
 
-                                            <div class="input-group input-group-alternative">
-                                                <input type="text" name="date_due" id="date_due" class="datepicker form-control form-control-alternative{{ $errors->has('date_due') ? ' is-invalid' : '' }}" placeholder="Select Date" value="{{ old('date_due') }}" data-date-format="yyyy-mm-dd" required autofocus>
-
-                                                <div class="input-group-append">
-                                                    <div class="input-group-append">
-                                                        <div id="dateDueNow" class="btn btn-link">Now</div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <input type="date" name="date_due" id="date_due" class="form-control form-control-alternative{{ $errors->has('date_due') ? ' is-invalid' : '' }}" value="{{ old('date_due') }}" required>
                                             
-        
                                             @if ($errors->has('date_due'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('date_due') }}</strong>
