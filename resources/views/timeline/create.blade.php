@@ -33,7 +33,6 @@
 
                                         <input type="date" name="date_start" id="date_start" class="form-control form-control-alternative{{ $errors->has('date_start') ? ' is-invalid' : '' }}" value="{{ old('date_start') }}" required>
                                         
-    
                                         @if ($errors->has('date_start'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('date_start') }}</strong>

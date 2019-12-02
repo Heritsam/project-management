@@ -11,7 +11,7 @@ class ProjectTimelineController extends Controller
     public function index($id)
     {
         $project = Project::findOrFail($id);
-        $timelines = $project->timelines->toFlatTree();
+        $timelines = $project->timelines;
         
         return view('timeline.index', compact('project', 'timelines'));
     }

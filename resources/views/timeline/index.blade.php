@@ -26,21 +26,13 @@
                         @endif
                         
                         @if ($timelines->isNotEmpty())
-                            <div class="list-group">
-                                @foreach ($timelines as $t)
-                                    <a href="" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#showTimeline-{{ $t->id }}">
-                                        {{ $loop->iteration }}. {{ $t->description }}
-
-                                        <small class="{{ $t->status ? 'text-success' : 'text-danger' }}">
-                                            ({{ $t->status() }})
-                                        </small>
-                                    </a>
+                            <ul class="list-group">
+                                @foreach ($timelines->toTree() as $t)
+                                    @include('timeline.partials.timelines', $t)
                                 @endforeach
-                            </div>
+                            </ul>
                         @else
-                            <div class="text-center text-danger">
-                                No timelines available in the projects.
-                            </div>
+                            @include('timeline.partials.timeline-none')
                         @endif
                     </div>
                 </div>
@@ -48,7 +40,7 @@
         </div>
     </div>
 
-    @include('timeline.partials.modals', ['timelines' => $timelines])
+    @include('timeline.partials.modals', ['timelines' => $timelines->toFlatTree()])
 @endsection
 
 @push('js')
