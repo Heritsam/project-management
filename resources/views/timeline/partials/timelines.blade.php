@@ -1,13 +1,22 @@
 <li class="list-group-item">
-    {{ $loop->iteration }}. {{ $t->description }}
-
-    <small class="{{ $t->status ? 'text-success' : 'text-danger' }}">
-        ({{ $t->status() }})
-    </small>
-
-    <button type="button" class="btn btn-primary bg-gradient-primary btn-sm ml-3" data-toggle="modal" data-target="#showTimeline-{{ $t->id }}">
-        <i class="ni ni-send"></i>
-    </button>
+    <div class="d-flex">
+        <div>
+            {{ $loop->iteration }}. {{ $t->description }}
+        
+            <small class="{{ $t->status ? 'text-success' : 'text-danger' }}">
+                ({{ $t->status() }})
+            </small>
+        </div>
+    
+        <button type="button" class="btn btn-success btn-icon border-0 bg-gradient-success ml-auto" data-toggle="modal" data-target="#showTimeline-{{ $t->id }}">
+            <span class="btn-inner--icon">
+                <i class="ni ni-air-baloon"></i>
+            </span>
+            <span class="btn-inner--text">
+                More info
+            </span>
+        </button>
+    </div>
 
     @if ($t->children->isNotEmpty())
         <ul class="list-group mt-4">
