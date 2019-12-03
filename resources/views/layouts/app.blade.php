@@ -42,6 +42,10 @@
             @include('layouts.navbars.navbar')
             
             @yield('content')
+
+            <div class="container-fluid py-4">
+                @include('layouts.footers.nav')
+            </div>
         </div>
 
         <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
