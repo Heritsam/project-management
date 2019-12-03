@@ -10,7 +10,7 @@
 
 ### Setup
 
-```shell
+```bash
 cd ~/project_management
 composer install
 npm install && npm run dev
