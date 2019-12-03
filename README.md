@@ -1,12 +1,14 @@
 # Project Management
 
+> Project Management
+
 ## Installation
 
-1. Clone
+### Clone
 
 `git clone https://gitlab.com/Heritsam/project-management.git project_management`
 
-2. Setup
+### Setup
 
 ```shell
 cd ~/project_management
@@ -15,28 +17,28 @@ npm install && npm run dev
 cp .env.example .env
 php artisan key:generate
 ```
-   1. Create database **project_management**
-   2. Edit .env file
-        ```shell
-        ...
-        DB_CONNECTION=mysql
-        DB_HOST=127.0.0.1
-        DB_PORT=3306
-        DB_DATABASE=project_management
-        DB_USERNAME=[database_username]
-        DB_PASSWORD=[database_password]
-        ...
-        ```
-    3. Migrating tables
-        ```shell
-        php artisan migrate:fresh --seed
-        ```
+- Create database **project_management**
+- Edit .env file
 
-3. Running
 ```shell
-php artisan serve
+...
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=project_management
+DB_USERNAME=[database_username]
+DB_PASSWORD=[database_password]
+...
 ```
-- Users available
-| Email Address | username | password |
-| :-----------: | :------: | :------: |
-| ariqhm@gmail.com | heritsam | heritsam |
+
+- Migrating tables
+`php artisan migrate --seed`
+
+## Running
+
+- run using the following command
+`php artisan serve`
+
+- login using
+  - username: heritsam
+  - password: heritsam
