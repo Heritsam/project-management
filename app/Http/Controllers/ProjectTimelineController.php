@@ -67,7 +67,21 @@ class ProjectTimelineController extends Controller
 
     public function update(Request $request, $id, $timeline_id)
     {
-        //
+        $project = Project::findOrFail($id);
+        $timeline = ProjectTimeline::findOrFail($timeline_id);
+
+        $timeline->update([
+            'project_id' => $id,
+            'description' => $request->description,
+            'date_start' => $request->date_start,
+            'date_end' => $request->date_end,
+            'status' => 0,
+            'user_assign_id' => $request->user_assign_id,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id,
+        ]);
+
+        return redirect()->route('timeline.index', $id)->withStatus('Timeline updated successfully');
     }
     
     public function destroy($id, $timeline_id)

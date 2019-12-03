@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('{id}/timeline/create', 'ProjectTimelineController@create')->name('timeline.create');
 		Route::post('{id}/timeline', 'ProjectTimelineController@store')->name('timeline.store');
 		Route::get('{id}/timeline/{timeline_id}', 'ProjectTimelineController@edit')->name('timeline.edit');
+		Route::put('{id}/timeline/{timeline_id}', 'ProjectTimelineController@update')->name('timeline.update');
 		Route::delete('{id}/timeline/{timeline_id}', 'ProjectTimelineController@destroy')->name('timeline.destroy');
 		// Child timeline
 		Route::post('{id}/timeline/child', 'ProjectTimelineController@storeChild')->name('timeline.child.store');

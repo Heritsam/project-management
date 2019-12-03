@@ -16,8 +16,9 @@
                     </div>
                     
                     <div class="card-body">
-                        <form action="{{ route('timeline.store', $project->id) }}" method="post" autocomplete="off">
+                        <form action="{{ route('timeline.update', ['id' => $project->id, 'timeline_id' => $timeline->id]) }}" method="post" autocomplete="off">
                             @csrf
+                            @method('PUT')
 
                             <div class="form-group">
                                 <label for="description">Description</label>
@@ -70,7 +71,7 @@
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Create timeline</button>
+                                <button type="submit" class="btn btn-success">Update timeline</button>
                             </div>
                         </form>
                     </div>

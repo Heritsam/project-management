@@ -67,7 +67,7 @@
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Create timeline</button>
+                                <button type="submit" class="btn btn-success">Create timeline</button>
                             </div>
                         </form>
                     </div>
