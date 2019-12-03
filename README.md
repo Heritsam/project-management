@@ -36,9 +36,9 @@ DB_PASSWORD=[database_password]
 
 ## Running
 
-- run using the following command
+- Run using the following command
 `php artisan serve`
 
-- login using
+- Login using
   - username: heritsam
   - password: heritsam
