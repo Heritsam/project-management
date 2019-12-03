@@ -43,9 +43,11 @@
             
             @yield('content')
 
-            <div class="container-fluid py-4">
-                @include('layouts.footers.nav')
-            </div>
+            @auth
+                <div class="container-fluid py-4">
+                    @include('layouts.footers.nav')
+                </div>
+            @endauth
         </div>
 
         <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
