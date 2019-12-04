@@ -36,4 +36,9 @@ class ProjectTimeline extends Model
             return "Done";
         }
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\ProjectTimelineComment', 'project_timelines_id');
+    }
 }

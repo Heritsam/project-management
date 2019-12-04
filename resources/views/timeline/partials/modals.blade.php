@@ -68,6 +68,18 @@
                     </table>
 
                     <h4 class="mt-4">Comments</h4>
+
+                    <div class="bg-secondary rounded px-3 py-3">
+                        <form action="{{ route('timeline.comment.store', ['id' => $project->id, 'timeline_id' => $t->id]) }}" method="post">
+                            @csrf
+
+                            <textarea name="message" id="message" rows="4" class="form-control form-control-alternative" placeholder="Something..."></textarea>
+
+                            <div class="text-right mt-4">
+                                <button type="submit" class="btn btn-success">Comment</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
                 <div class="modal-footer">

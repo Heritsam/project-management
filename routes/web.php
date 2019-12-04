@@ -55,7 +55,14 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('{id}/timeline/{timeline_id}', 'ProjectTimelineController@edit')->name('timeline.edit');
 		Route::put('{id}/timeline/{timeline_id}', 'ProjectTimelineController@update')->name('timeline.update');
 		Route::delete('{id}/timeline/{timeline_id}', 'ProjectTimelineController@destroy')->name('timeline.destroy');
+		
 		// Child timeline
 		Route::post('{id}/timeline/child', 'ProjectTimelineController@storeChild')->name('timeline.child.store');
+
+		/**
+		 * Timeline comments
+		 */
+		Route::post('{id}/timeline/{timeline_id}/comment', 'ProjectTimelineCommentController@store')->name('timeline.comment.store');
+		Route::delete('{id}/timeline/{timeline_id}/comment/{comment_id}', 'ProjectTimelineCommentController@destroy')->name('timeline.comment.destroy');
 	});
 });
