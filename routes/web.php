@@ -24,8 +24,8 @@ Route::group(['middleware' => 'auth'], function() {
 	 * Profile routes
 	 */
 	Route::prefix('profile')->group(function() {
-		Route::get('', 'ProfileController@edit')->name('profile.edit');
-		Route::put('', 'ProfileController@update')->name('profile.update');
+		Route::get('edit', 'ProfileController@edit')->name('profile.edit');
+		Route::put('edit', 'ProfileController@update')->name('profile.update');
 		Route::put('password', 'ProfileController@password')->name('profile.password');
 	});
 
