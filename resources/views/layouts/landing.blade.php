@@ -32,9 +32,10 @@
         @stack('css')
     </head>
     <body class="{{ $class ?? '' }}">
-        <nav class="navbar navbar-expand-md navbar-dark bg-gradient-primary shadow-sm">
+        <nav class="navbar navbar-expand-md {{ Request::is('home') ? 'navbar-light bg-white border-top border-primary' : 'navbar-dark bg-gradient-primary' }} shadow-sm" style="border-width: 5px !important">
+            
             <div class="container">
-                <a class="navbar-brand text-white" href="{{ route('home') }}">
+                <a class="navbar-brand" href="{{ route('home') }}">
                     <div class="title my-0">
                         <img src="{{ asset('img/logo.png') }}" class="navbar-brand-img" alt="..." width="30">
                         <span class="ml-2">Project Management</span>
