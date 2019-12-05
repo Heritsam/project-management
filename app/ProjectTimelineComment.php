@@ -14,4 +14,9 @@ class ProjectTimelineComment extends Model
     {
         return $this->belongsTo('App\ProjectTimeline', 'project_timelines_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'created_by');
+    }
 }

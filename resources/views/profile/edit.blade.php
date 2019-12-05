@@ -30,7 +30,7 @@
                                         <span class="description">{{ Str::plural('Project', Auth::user()->contributes->count()) . " started" }}</span>
                                     </div>
                                     <div>
-                                        <span class="heading">89</span>
+                                        <span class="heading">{{ Auth::user()->comments->count() }}</span>
                                         <span class="description">{{ __('Comments') }}</span>
                                     </div>
                                 </div>

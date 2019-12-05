@@ -36,4 +36,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\ProjectContributor');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\ProjectTimelineComment', 'created_by');
+    }
 }
