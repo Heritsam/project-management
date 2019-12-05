@@ -71,7 +71,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link{{ Request::is('project/'.$project->id) ? ' active' : '' }}" href="{{ route('project.show', $project->id) }}">
-                        <i class="fa fa-home{{ Request::is('project/'.$project->id) ? ' text-primary' : '' }}"></i> Project Overview
+                        <i class="fa fa-home{{ Request::is('project/'.$project->id) ? ' text-primary' : '' }}"></i> Project overview
                     </a>
                 </li>
 
@@ -95,7 +95,7 @@
                 
                 <li class="nav-item mb-5" style="position: absolute; bottom: 0;">
                     <a class="nav-link" href="{{ route('home') }}">
-                        <i class="fa fa-chevron-left text-danger"></i> Project List
+                        <i class="fa fa-chevron-left text-danger"></i> Back to project list
                     </a>
                 </li>
             </ul>
