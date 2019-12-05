@@ -22,7 +22,9 @@
                             <i class="fa fa-percentage"></i>
                         </div>
                         <div class="py-3">
-                            <span class="font-weight-bold">0%</span>
+                            <span class="font-weight-bold">
+                                {{ $timelines_done }}%
+                            </span>
                             Done
                         </div>
                     </div>
