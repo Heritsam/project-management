@@ -71,7 +71,9 @@
                                             <i class="fa fa-percentage"></i>
                                         </div>
                                         <div class="py-3">
-                                            <span class="font-weight-bold">0%</span>
+                                            <span class="font-weight-bold">
+                                                {{ ($p->timelines->where('date_done', '!=', null)->count() / $p->timelines->count()) * 100 }}%
+                                            </span>
                                             Done
                                         </div>
                                     </div>
@@ -85,7 +87,7 @@
                                     </div>
                                     <div class="col-md-4 text-center">
                                         <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow icon-detail">
-                                            <i class="fa fa-user-friends"></i>
+                                            <i class="fa fa-users"></i>
                                         </div>
                                         <div class="py-3">
                                             {{ $p->contributors->count() . Str::plural(" Contributor", $p->contributors->count()) }}

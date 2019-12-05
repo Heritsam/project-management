@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-md-4 text-center">
                         <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow">
-                            <i class="fa fa-user-friends"></i>
+                            <i class="fa fa-users"></i>
                         </div>
                         <div class="py-3">
                             {{ $project->contributors->count() . Str::plural(" Contributor", $project->contributors->count()) }}
