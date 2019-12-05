@@ -23,7 +23,7 @@
                         </div>
                         <div class="py-3">
                             <span class="font-weight-bold">
-                                {{ $timelines_done }}%
+                                {{ $project->done_percentage() }}
                             </span>
                             Done
                         </div>

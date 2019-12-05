@@ -28,4 +28,16 @@ class Project extends Model
     {
         return $this->belongsTo('App\User', 'created_by');
     }
+
+    public function done_percentage()
+    {
+        if ($this->timelines->isEmpty()) {
+            return '0%';
+        }
+
+        $timelines_done = $this->timelines->where('date_done', '!=', null)->count();
+        $timelines_done = ($timelines_done / $this->timelines->count()) * 100;
+        
+        return $timelines_done;
+    }
 }

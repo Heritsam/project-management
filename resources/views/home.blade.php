@@ -73,7 +73,7 @@
                                             </div>
                                             <div class="py-3">
                                                 <span class="font-weight-bold">
-                                                    {{ ($p->timelines->where('date_done', '!=', null)->count() / $p->timelines->count()) * 100 }}%
+                                                    {{ $p->done_percentage() }}
                                                 </span>
                                                 Done
                                             </div>

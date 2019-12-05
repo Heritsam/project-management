@@ -37,11 +37,8 @@ class ProjectController extends Controller
     {
         $project = Project::findOrFail($id);
         $users = User::where('id', '!=', $project->contributors->pluck('user_id')->toArray())->get();
-
-        $timelines_done = $project->timelines->where('date_done', '!=', null)->count();
-        $timelines_done = ($timelines_done / $project->timelines->count()) * 100;
         
-        return view('project.show', compact('project', 'users', 'timelines_done'));
+        return view('project.show', compact('project', 'users'));
     }
 
     public function edit($id)
