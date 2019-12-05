@@ -111,7 +111,7 @@
                                         @endif
                                     </div>
 
-                                    <a href="{{ route('project.show', $p->id) }}" class="btn btn-success bg-gradient-success ml-auto btn-icon goto">
+                                    <a href="{{ route('project.show', $p->id) }}" class="btn btn-success bg-gradient-success ml-auto btn-icon">
                                         <span class="btn-inner--icon"><i class="ni ni-app"></i></span>
                                         <span class="btn-inner--text">
                                             Go to project
@@ -133,7 +133,7 @@
     var toggle = false;
     var animationClass = 'pulse';
 
-    $('.goto').hover(function() {
+    $('.card').hover(function() {
         toggle = !toggle;
 
         if (toggle) {
