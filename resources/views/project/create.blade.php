@@ -70,7 +70,7 @@
                                 <input type="hidden" name="updated_by" value="{{ Auth::user()->id }}">
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-success mt-4">SAVE</button>
+                                    <button type="submit" class="btn btn-success mt-4">Create new project</button>
                                 </div>
                             </div>
                         </form>
