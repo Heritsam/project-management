@@ -29,8 +29,10 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::put('password', 'ProfileController@password')->name('profile.password');
 	});
 
-	Route::resource('user', 'UserController');
-	Route::resource('group', 'UserGroupController');
+	Route::middleware('admin')->group(function() {
+		Route::resource('user', 'UserController');
+		Route::resource('group', 'UserGroupController');
+	});
 
 	/**
 	 * Project routes

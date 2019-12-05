@@ -15,7 +15,7 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->user()->group != "Administrator") {
+        if (auth()->user()->group->name != "Administrator") {
             return redirect()->route('home');
         }
         
