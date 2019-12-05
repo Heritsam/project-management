@@ -10,23 +10,24 @@
         <title>{{ isset($title) ? "$title - " : '' }}{{ config('app.name', 'Zamasco Project Manager') }}</title>
 
         <!-- Favicon -->
-        <link href="{{ asset('favicon.ico') }}" rel="icon" type="image/png">
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
 
         <!-- Icons -->
-        <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-        <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css">
+        <link rel="stylesheet" href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
-        <!-- Argon CSS -->
-        <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ asset('argon') }}/css/argon.css?v=1.0.0">
+        <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 
         <!-- Datatables -->
         <link rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
 
-        <!-- Select2 -->
-        <link href="{{ asset('css/bootstrap-select.min.css') }}" rel="stylesheet" />
+        <!-- Select -->
+        <link rel="stylesheet" href="{{ asset('css/selectize.bootstrap3.css') }}">
 
         @stack('css')
     </head>
