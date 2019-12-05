@@ -4,8 +4,8 @@
     @include('layouts.headers.title-landing', ['title' => 'Edit User'])
 
     <div class="container mt--7">
-        <div class="row">
-            <div class="col-xl-12 order-xl-1">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
@@ -78,7 +78,7 @@
                             </div>
 
                             <h6 class="heading-small text-muted mb-4">
-                                Change Password (Optional)
+                                Change Password <span class="text-danger">(Optional)</span>
                             </h6>
                             
                             <div class="pl-lg-4">

@@ -4,8 +4,8 @@
     @include('layouts.headers.title-landing', ['title' => 'List of Users'])
 
     <div class="container mt--7">
-        <div class="row">
-            <div class="col">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">

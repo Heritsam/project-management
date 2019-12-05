@@ -3,9 +3,9 @@
 @section('content')
     @include('layouts.headers.title-landing', ['title' => 'List of Groups'])
 
-    <div class="container-fluid mt--7">
+    <div class="container mt--7">
         <div class="row justify-content-center">
-            <div class="col-xl-8">
+            <div class="col-md-10">
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
@@ -50,7 +50,7 @@
                                             <td>{{ $group->users->count() }}</td>
                                             <td class="text-right">
                                                 <div class="dropdown">
-                                                    <a class="btn btn-primary btn-icon-only" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <a class="btn btn-primary btn-icon-only {{ $group->name == 'Administrator' ? 'disabled' : '' }}" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <i class="fas fa-ellipsis-v"></i>
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">

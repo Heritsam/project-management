@@ -10,7 +10,7 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0"><span class="text-muted">Group |</span> {{ $group->name }}</h3>
+                                <h3 class="mb-0"><span class="text-muted">Group |</span> List of Users in {{ $group->name }}</h3>
                             </div>
                             <div class="col-4 text-right">
                                 <a href="{{ url()->previous() }}" class="btn btn-sm btn-primary">Back</a>
@@ -29,16 +29,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($group->users as $user)
+                                @if ($group->users->isNotEmpty())
+                                    @foreach ($group->users as $user)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>
+                                                <a href="mailto:{{ $user->email }}" target="_blank">{{ $user->email }}</a>
+                                            </td>
+                                            <td>{{ $user->username }}</td>
+                                        </tr>
+                                    @endforeach
+                                @else
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>
-                                            <a href="mailto:{{ $user->email }}" target="_blank">{{ $user->email }}</a>
+                                        <td colspan="4" align="center">
+                                            <div class="text-danger mb-2">No users found</div>
+                                            <a href="{{ route('user.create') }}" class="btn btn-success btn-sm">Add one instead</a>
                                         </td>
-                                        <td>{{ $user->username }}</td>
                                     </tr>
-                                @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>

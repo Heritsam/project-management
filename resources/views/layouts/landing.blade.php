@@ -32,7 +32,7 @@
         @stack('css')
     </head>
     <body class="{{ $class ?? '' }}">
-        <nav class="navbar navbar-expand-md {{ Request::is('home') ? 'navbar-light bg-white border-top border-primary' : 'navbar-dark bg-gradient-primary' }} shadow-sm" style="border-width: 5px !important">
+        <nav class="navbar navbar-expand-md navbar-light bg-white border-top border-primary shadow-sm" style="border-width: 5px !important">
             
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
@@ -67,9 +67,11 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item {{ Request::is('home') ? 'active' : '' }}">
-                                <a href="{{ route('home') }}" class="nav-link">Home</a>
-                            </li>
+                            @if (Auth::user()->group->name != 'Administrator')
+                                <li class="nav-item {{ Request::is('home') ? 'active' : '' }}">
+                                    <a href="{{ route('home') }}" class="nav-link">Project List</a>
+                                </li>
+                            @endif
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -98,6 +100,29 @@
                 </div>
             </div>
         </nav>
+        
+        @if (Auth::user()->group->name == 'Administrator')
+            <div class="nav-scroller bg-white shadow-sm">
+                <div class="container">
+                    <nav class="nav nav-underline">
+                        <a href="{{ route('home') }}" class="nav-link {{ Request::is('home') ? 'active' : '' }}">
+                            <span><i class="fa fa-puzzle-piece"></i></span>
+                            Project List
+                        </a>
+
+                        <a href="{{ route('group.index') }}" class="nav-link {{ Request::is('group*') ? 'active' : '' }}">
+                            <span><i class="fa fa-university"></i></span>
+                            User Groups
+                        </a>
+
+                        <a href="{{ route('user.index') }}" class="nav-link {{ Request::is('user*') ? 'active' : '' }}">
+                            <span><i class="fa fa-user-friends"></i></span>
+                            User Management
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        @endif
         
         <div class="main-content">
             @yield('content')

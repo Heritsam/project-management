@@ -39,91 +39,99 @@
                     @endif
                 </div>
 
-                @foreach ($projects as $p)
-                    <div class="col-md-6">
-                        <div class="card border shadow-sm mb-4">
-                            <div class="card-body">
-                                <h2 class="card-title">
-                                    {{ $p->name }}
+                @if ($projects->isNotEmpty())
+                    @foreach ($projects as $p)
+                        <div class="col-md-6">
+                            <div class="card border shadow-sm mb-4">
+                                <div class="card-body">
+                                    <h2 class="card-title">
+                                        {{ $p->name }}
 
-                                    @if ($p->date_due->diffInDays(now()) < 2)
-                                        <span class="badge badge-danger">
-                                            {{ $p->date_due->diffForHumans() }}
-                                        </span>
-                                    @elseif ($p->date_due->diffInDays(now()) < 7)
-                                        <span class="badge badge-warning">
-                                            {{ $p->date_due->diffForHumans() }}
-                                        </span>
-                                    @else
-                                        <span class="badge badge-success">
-                                            {{ $p->date_due->diffForHumans() }}
-                                        </span>
-                                    @endif
-                                </h2>
-
-                                <h5 class="card-subtitle text-muted">
-                                    Started by <a href="">{{ $p->started_by->name }}</a>
-                                </h5>
-                                
-                                <div class="row justify-content-center pt-5">
-                                    <div class="col-md-4 text-center">
-                                        <div class="icon icon-shape bg-gradient-blue text-white rounded-circle shadow icon-detail">
-                                            <i class="fa fa-percentage"></i>
-                                        </div>
-                                        <div class="py-3">
-                                            <span class="font-weight-bold">
-                                                {{ ($p->timelines->where('date_done', '!=', null)->count() / $p->timelines->count()) * 100 }}%
-                                            </span>
-                                            Done
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow icon-detail">
-                                            <i class="fa fa-project-diagram"></i>
-                                        </div>
-                                        <div class="py-3">
-                                            {{ $p->timelines->count() . Str::plural(" Timeline", $p->timelines->count()) }}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 text-center">
-                                        <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow icon-detail">
-                                            <i class="fa fa-users"></i>
-                                        </div>
-                                        <div class="py-3">
-                                            {{ $p->contributors->count() . Str::plural(" Contributor", $p->contributors->count()) }}
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="d-flex align-items-baseline">
-                                    <div class="mt-4">
-                                        Due date
                                         @if ($p->date_due->diffInDays(now()) < 2)
-                                            <span class="text-danger">
-                                                {{ date('d M Y', strtotime($p->date_due)) }}
+                                            <span class="badge badge-danger">
+                                                {{ $p->date_due->diffForHumans() }}
                                             </span>
                                         @elseif ($p->date_due->diffInDays(now()) < 7)
-                                            <span class="text-warning">
-                                                {{ date('d M Y', strtotime($p->date_due)) }}
+                                            <span class="badge badge-warning">
+                                                {{ $p->date_due->diffForHumans() }}
                                             </span>
                                         @else
-                                            <span class="text-success">
-                                                {{ date('d M Y', strtotime($p->date_due)) }}
+                                            <span class="badge badge-success">
+                                                {{ $p->date_due->diffForHumans() }}
                                             </span>
                                         @endif
-                                    </div>
+                                    </h2>
 
-                                    <a href="{{ route('project.show', $p->id) }}" class="btn btn-success bg-gradient-success ml-auto btn-icon">
-                                        <span class="btn-inner--icon"><i class="ni ni-app"></i></span>
-                                        <span class="btn-inner--text">
-                                            Go to project
-                                        </span>
-                                    </a>
+                                    <h5 class="card-subtitle text-muted">
+                                        Started by <a href="">{{ $p->started_by->name }}</a>
+                                    </h5>
+                                    
+                                    <div class="row justify-content-center pt-5">
+                                        <div class="col-md-4 text-center">
+                                            <div class="icon icon-shape bg-gradient-blue text-white rounded-circle shadow icon-detail">
+                                                <i class="fa fa-percentage"></i>
+                                            </div>
+                                            <div class="py-3">
+                                                <span class="font-weight-bold">
+                                                    {{ ($p->timelines->where('date_done', '!=', null)->count() / $p->timelines->count()) * 100 }}%
+                                                </span>
+                                                Done
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow icon-detail">
+                                                <i class="fa fa-project-diagram"></i>
+                                            </div>
+                                            <div class="py-3">
+                                                {{ $p->timelines->count() . Str::plural(" Timeline", $p->timelines->count()) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow icon-detail">
+                                                <i class="fa fa-users"></i>
+                                            </div>
+                                            <div class="py-3">
+                                                {{ $p->contributors->count() . Str::plural(" Contributor", $p->contributors->count()) }}
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="d-flex align-items-baseline">
+                                        <div class="mt-4">
+                                            Due date
+                                            @if ($p->date_due->diffInDays(now()) < 2)
+                                                <span class="text-danger">
+                                                    {{ date('d M Y', strtotime($p->date_due)) }}
+                                                </span>
+                                            @elseif ($p->date_due->diffInDays(now()) < 7)
+                                                <span class="text-warning">
+                                                    {{ date('d M Y', strtotime($p->date_due)) }}
+                                                </span>
+                                            @else
+                                                <span class="text-success">
+                                                    {{ date('d M Y', strtotime($p->date_due)) }}
+                                                </span>
+                                            @endif
+                                        </div>
+
+                                        <a href="{{ route('project.show', $p->id) }}" class="btn btn-success bg-gradient-success ml-auto btn-icon">
+                                            <span class="btn-inner--icon"><i class="ni ni-app"></i></span>
+                                            <span class="btn-inner--text">
+                                                Go to project
+                                            </span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    @endforeach
+                @else
+                    <div class="col-md-12 mt-4">
+                        <div class="text-danger text-center">
+                            No projects found.
+                        </div>
                     </div>
-                @endforeach
+                @endif
             </div>
         </div>
     </div>
