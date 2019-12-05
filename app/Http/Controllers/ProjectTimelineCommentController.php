@@ -24,6 +24,11 @@ class ProjectTimelineCommentController extends Controller
 
     public function destroy($id, $timeline_id, $comment_id)
     {
-        
+        $timeline = Timeline::findOrFail($timeline_id);
+        $comment = Comment::findOrFail($comment_id);
+
+        $comment->delete();
+
+        return redirect()->route('timeline.index', $id)->withStatus('Comment successfuly deleted on \'' . $timeline->description . '\' timeline');
     }
 }

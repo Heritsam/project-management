@@ -70,10 +70,43 @@
                     <h4 class="mt-4">Comments</h4>
 
                     <div class="bg-secondary rounded px-3 py-3">
+                        <ul class="list-group mb-4">
+                            @foreach ($t->comments as $c)
+                                <li class="list-group-item">
+                                    <div class="d-flex align-items-baseline">
+                                        <h4>
+                                            {{ $c->user->name }} 
+                                            <small>{{ $c->created_at->diffForHumans() }}</small>
+                                        </h4>
+
+                                        <div class="dropdown ml-auto">
+                                            <a class="btn btn-primary btn-sm btn-icon-only rounded-circle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                @if ($c->user->id == auth()->id())
+                                                    <form action="{{ route('timeline.comment.destroy', ['id' => $project->id, 'timeline_id' => $t->id, 'comment_id' => $c->id]) }}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        
+                                                        <button type="button" class="dropdown-item" onclick="confirm('Are you sure you want to delete this comment?') ? this.parentElement.submit() : ''">
+                                                            {{ __('Delete') }}
+                                                        </button>
+                                                    </form>    
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p>{{ $c->message }}</p>
+                                </li>
+                            @endforeach
+                        </ul>
+                        
                         <form action="{{ route('timeline.comment.store', ['id' => $project->id, 'timeline_id' => $t->id]) }}" method="post">
                             @csrf
 
-                            <textarea name="message" id="message" rows="4" class="form-control form-control-alternative" placeholder="Something..."></textarea>
+                            <textarea name="message" id="message" rows="4" class="form-control" placeholder="Something..."></textarea>
 
                             <div class="text-right mt-4">
                                 <button type="submit" class="btn btn-success">Comment</button>
