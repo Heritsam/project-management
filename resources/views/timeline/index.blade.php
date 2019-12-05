@@ -54,5 +54,11 @@
             var dateDue = document.getElementById('date_end');
             dateDue.value = "{{ now()->format('Y-m-d') }}";
         });
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('[data-toggle="tooltip"]').hover(function() {
+            alert('wayoo');
+        });
     </script>
 @endpush
