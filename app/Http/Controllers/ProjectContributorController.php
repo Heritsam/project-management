@@ -13,7 +13,7 @@ class ProjectContributorController extends Controller
     {
         $project = Project::findOrFail($id);
         $contributors = $project->contributors;
-        $users = User::all();
+        $users = User::where('username' , '!=', 'administrator')->get();
         
         return view('contributor.index', compact('project', 'contributors', 'users'));
     }
