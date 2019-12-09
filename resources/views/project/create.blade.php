@@ -85,14 +85,15 @@
 
 @push('js')
     <script>
-        $('#dateStartNow').click(function() {
-            var dateStart = document.getElementById('date_start');
-            dateStart.value = "{{ now()->format('Y-m-d') }}";
-        });
+        let dateStart = document.getElementById('date_start');
+        let dateDue = document.getElementById('date_due');
 
-        $('#dateDueNow').click(function() {
-            var dateDue = document.getElementById('date_due');
-            dateDue.value = "{{ now()->format('Y-m-d') }}";
+        $('#date_start').change(function() {
+            dateDue.min = dateStart.value;
+
+            if (dateDue.value < dateStart.value) {
+                dateDue.value = dateStart.value;s
+            }
         });
     </script>
 @endpush

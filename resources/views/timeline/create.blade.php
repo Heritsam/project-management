@@ -79,14 +79,22 @@
 
 @push('js')
     <script>
-        $('#dateStartNow').click(function() {
-            var dateStart = document.getElementById('date_start');
-            dateStart.value = "{{ now()->format('Y-m-d') }}";
-        });
+        let projectStart = "{{ $project->date_start->format('Y-m-d') }}";
+        let projectEnd = "{{ $project->date_due->format('Y-m-d') }}";
+        
+        let dateStart = document.getElementById('date_start');
+        let dateEnd = document.getElementById('date_end');
 
-        $('#dateEndNow').click(function() {
-            var dateDue = document.getElementById('date_end');
-            dateDue.value = "{{ now()->format('Y-m-d') }}";
+        dateStart.min = projectStart;
+        dateStart.max = projectEnd;
+
+        $('#date_start').change(function() {
+            dateEnd.min = dateStart.value;
+            dateEnd.max = projectEnd;
+
+            if (dateEnd.value < dateStart.value) {
+                dateEnd.value = dateStart.value;
+            }
         });
     </script>
 @endpush

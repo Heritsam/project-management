@@ -24,6 +24,15 @@
                                 </button>
                             </div>
                         @endif
+
+                        @if (session('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session('error') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
                         
                         @if ($timelines->isNotEmpty())
                             <ul class="list-group">
@@ -45,20 +54,22 @@
 
 @push('js')
     <script>
-        $('#dateStartNow').click(function() {
-            var dateStart = document.getElementById('date_start');
-            dateStart.value = "{{ now()->format('Y-m-d') }}";
-        });
+        let projectStart = "{{ $project->date_start->format('Y-m-d') }}";
+        let projectEnd = "{{ $project->date_due->format('Y-m-d') }}";
+        
+        let dateStart = document.getElementById('date_start');
+        let dateEnd = document.getElementById('date_end');
 
-        $('#dateEndNow').click(function() {
-            var dateDue = document.getElementById('date_end');
-            dateDue.value = "{{ now()->format('Y-m-d') }}";
-        });
+        dateStart.min = projectStart;
+        dateStart.max = projectEnd;
 
-        $('[data-toggle="tooltip"]').tooltip();
+        $('#date_start').change(function() {
+            dateEnd.min = dateStart.value;
+            dateEnd.max = projectEnd;
 
-        $('[data-toggle="tooltip"]').hover(function() {
-            alert('wayoo');
+            if (dateEnd.value < dateStart.value) {
+                dateEnd.value = dateStart.value;
+            }
         });
     </script>
 @endpush
