@@ -92,4 +92,29 @@ class ProjectTimelineController extends Controller
 
         return redirect()->route('timeline.index', $id)->withStatus('Timeline deleted successfully');
     }
+
+    public function toggleApprove($id, $timeline_id)
+    {
+        $timeline = ProjectTimeline::findOrFail($timeline_id);
+
+        if ($timeline->user_assign_id == auth()->user()->id) {
+            if ($timeline->status() == "Pending") {
+                $timeline->date_done = now();
+                $timeline->user_done_id = auth()->user()->id;
+        
+                $timeline->save();
+    
+                return redirect()->route('timeline.index', $id)->withStatus('Timeline approved successfully');
+            } else {
+                $timeline->date_done = null;
+                $timeline->user_done_id = null;
+        
+                $timeline->save();
+    
+                return redirect()->route('timeline.index', $id)->withStatus('Timeline un-approved successfully');
+            }
+        }
+
+        return redirect()->route('timeline.index', $id)->with('error', 'Sorry. you can\'t approve this timeline');
+    }
 }

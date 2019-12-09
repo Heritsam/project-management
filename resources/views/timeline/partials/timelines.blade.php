@@ -3,7 +3,7 @@
         <div>
             {{ $loop->iteration }}. {{ $t->description }}
         
-            <small class="{{ $t->status ? 'text-success' : 'text-danger' }}">
+            <small class="{{ $t->status() == 'Done' ? 'text-success' : 'text-danger' }}">
                 ({{ $t->status() }})
             </small>
         </div>

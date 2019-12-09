@@ -59,10 +59,29 @@
                                 {{ $t->status() }}
                             </td>
                         </tr>
-                        @if ($t->status)
+                        @if ($t->status() == "Done")
                             <tr>
                                 <th>Date Done</th>
                                 <td>{{ date('d M Y', strtotime($t->date_done)) }}</td>
+                            </tr>
+                        @endif
+                        @if ($t->user_assign_id == Auth::user()->id)
+                            <tr>
+                                <th>Approve</th>
+                                <td>
+                                    <div class="custom-control custom-control-alternative custom-checkbox mb-3">
+                                        <input 
+                                            class="custom-control-input" 
+                                            id="approve" 
+                                            type="checkbox" 
+                                            {{ $t->status() == 'Done' ? 'checked' : ''}} 
+                                            onclick="location.href='{{ route('timeline.approve', ['id' => $project->id, 'timeline_id' => $t->id]) }}'">
+
+                                        <label class="custom-control-label" for="approve">
+                                            Approve
+                                        </label>
+                                    </div>
+                                </td>
                             </tr>
                         @endif
                     </table>

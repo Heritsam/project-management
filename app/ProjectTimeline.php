@@ -30,10 +30,10 @@ class ProjectTimeline extends Model
 
     public function status()
     {
-        if ($this->status == 0) {
-            return "Pending";
-        } else {
+        if ($this->date_done) {
             return "Done";
+        } else {
+            return "Pending";
         }
     }
 
