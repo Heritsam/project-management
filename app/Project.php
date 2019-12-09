@@ -38,6 +38,6 @@ class Project extends Model
         $timelines_done = $this->timelines->where('date_done', '!=', null)->count();
         $timelines_done = ($timelines_done / $this->timelines->count()) * 100;
         
-        return $timelines_done;
+        return sprintf('%0.2f', $timelines_done) . "%";
     }
 }
