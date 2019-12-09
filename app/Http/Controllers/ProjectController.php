@@ -54,7 +54,7 @@ class ProjectController extends Controller
 
         $project->update($request->all());
 
-        return redirect()->route('project.show', $project->id)->withStatus('Project successfully created.');
+        return redirect()->route('project.show', $project->id)->withStatus('Project information successfully updated.');
     }
 
     public function destroy($id)
