@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row h-100vh d-flex align-items-center justify-content-center">
-            <div class="col-lg-5 col-md-7">
+            <div class="col-lg-5 col-md-6">
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="mb-4">
@@ -57,7 +57,7 @@
                                 </label>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-block my-4">{{ __('Sign in') }}</button>
+                                <button type="submit" class="btn btn-success bg-gradient-success border-0 btn-block my-4">{{ __('Sign in') }}</button>
                             </div>
                         </form>
                     </div>
