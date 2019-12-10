@@ -39,7 +39,6 @@ Route::group(['middleware' => 'auth'], function() {
 	 */
 	Route::resource('project', 'ProjectController');
 	Route::prefix('project')->group(function() {
-		Route::get('{id}/settings', 'ProjectController@settings')->name('project.settings');
 		
 		/**
 		 * Contributor routes
