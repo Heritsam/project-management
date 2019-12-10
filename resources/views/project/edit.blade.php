@@ -121,7 +121,7 @@
                     <p class="text-danger font-weight-bold">You are going to remove {{ $project->name }}.</p>
                     <p><strong>Removed projects cannot be restored!</strong></p>
 
-                    <div class="form-group">
+                    <div class="form-group mt-5">
                         <label for="project_name">Please type <span class="text-primary font-weight-bold">{{ $project->name }}</span> to proceed</label>
                         
                         <input type="text" name="project_name" id="project_name" class="form-control">
@@ -129,7 +129,9 @@
                 </div>
                 
                 <div class="modal-footer">
-                    <form action="{{ route('project.destroy', $project->id) }}" method="post" class="ml-auto">
+                    <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+                    
+                    <form action="{{ route('project.destroy', $project->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         
