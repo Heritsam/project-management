@@ -20,7 +20,7 @@
                                         <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                                     </div>
 
-                                    <input class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" placeholder="Username" type="text" name="username" value="{{ old('username') }}" required autofocus>
+                                    <input class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" placeholder="Username or Email" type="text" name="username" value="{{ old('username') }}" required autofocus>
                                 </div>
                                 @if ($errors->has('username'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
