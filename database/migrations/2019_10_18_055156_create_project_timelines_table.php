@@ -29,24 +29,24 @@ class CreateProjectTimelinesTable extends Migration
             $table->unsignedBigInteger('updated_by');;
 
             $table->foreign('project_id')
-                  ->references('id')
-                  ->on('projects');
+                  ->references('id')->on('projects')
+                  ->onDelete('cascade');
             
             $table->foreign('user_done_id')
-                  ->references('id')
-                  ->on('users');
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
 
             $table->foreign('user_assign_id')
-                  ->references('id')
-                  ->on('users');
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
             
             $table->foreign('created_by')
-                  ->references('id')
-                  ->on('users');
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
 
             $table->foreign('updated_by')
-                  ->references('id')
-                  ->on('users');
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
                   
             $table->timestamps();
         });

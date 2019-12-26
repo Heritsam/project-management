@@ -23,12 +23,12 @@ class CreateProjectsTable extends Migration
             $table->unsignedBigInteger('updated_by');
 
             $table->foreign('created_by')
-                  ->references('id')
-                  ->on('users');
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
 
             $table->foreign('updated_by')
-                  ->references('id')
-                  ->on('users');
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
                   
             $table->timestamps();
         });

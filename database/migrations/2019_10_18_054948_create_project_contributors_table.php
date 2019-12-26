@@ -25,16 +25,16 @@ class CreateProjectContributorsTable extends Migration
                   ->onDelete('cascade');
 
             $table->foreign('user_id')
-                  ->references('id')
-                  ->on('users');
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
 
             $table->foreign('created_by')
-                  ->references('id')
-                  ->on('users');
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
 
             $table->foreign('updated_by')
-                  ->references('id')
-                  ->on('users');
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
 
             $table->timestamps();
         });
