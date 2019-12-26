@@ -127,39 +127,6 @@
                 </div>
             </div>
         </div>
-        
-        <div class="mt-5 text-center">
-            <form action="{{ route('project.destroy', $project->id) }}" method="post">
-                @csrf
-                @method('DELETE')
-
-                @if (in_array(Auth::user()->id, $project->contributors->pluck('user_id')->toArray()))
-                    <a href="{{ route('project.edit', $project->id) }}" class="btn btn-link btn-icon">
-                        <i class="fa fa-pen"></i> Edit Project
-                    </a>
-                @endif
-                
-                @if ($project->started_by->id == Auth::user()->id)
-                    <button type="submit" class="btn btn-link text-danger btn-icon"
-                        onclick="return confirm('Are you sure you want to delete this project? this action cannot be reverted')">
-                        <i class="fa fa-trash"></i> Delete Project
-                    </button>
-                @endif
-            </form>
-        </div>
     </div>
 @endsection
 
-@push('js')
-    <script>
-        $('#dateStartNow').click(function() {
-            var dateStart = document.getElementById('date_start');
-            dateStart.value = "{{ now()->format('Y-m-d') }}";
-        });
-
-        $('#dateDueNow').click(function() {
-            var dateDue = document.getElementById('date_end');
-            dateDue.value = "{{ now()->format('Y-m-d') }}";
-        });
-    </script>
-@endpush

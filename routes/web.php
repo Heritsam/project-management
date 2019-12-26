@@ -66,7 +66,7 @@ Route::group(['middleware' => 'auth'], function() {
 		/**
 		 * Timeline comments
 		 */
-		Route::post('{id}/timeline/{timeline_id}/comment', 'ProjectTimelineCommentController@store')->name('timeline.comment.store');
+		Route::post('{id}/timeline/{timeline_id}/comment', 'ProjectTimelineCommentController@store')->name('timeline.comment.store');	
 		Route::delete('{id}/timeline/{timeline_id}/comment/{comment_id}', 'ProjectTimelineCommentController@destroy')->name('timeline.comment.destroy');
 	});
 });
