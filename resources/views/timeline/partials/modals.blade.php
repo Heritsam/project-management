@@ -32,10 +32,6 @@
                         <p>
                             {{ date('d M Y', strtotime($t->date_start)) }} - {{ date('d M Y', strtotime($t->date_end)) }}
                         </p>
-
-                        <a href="#" class="btn btn-success bg-gradient-success btn-sm mb-3" data-toggle="modal" data-target="#addChildTimeline-{{ $t->id }}">
-                            Add another timeline
-                        </a>
                     </div>
 
                     <table class="table">
@@ -55,7 +51,7 @@
                         </tr>
                         <tr>
                             <th>Status</th>
-                            <td class="text-uppercase font-weight-bold mt-4 {{ $t->status ? 'text-success' : 'text-danger' }}">
+                            <td class="text-uppercase font-weight-bold mt-4 {{ $t->status() == "Done" ? 'text-success' : 'text-danger' }}">
                                 {{ $t->status() }}
                             </td>
                         </tr>
@@ -70,7 +66,7 @@
                                 <th>Approve</th>
                                 <td>
                                     <a href="{{ route('timeline.approve', ['id' => $project->id, 'timeline_id' => $t->id]) }}" class="btn {{ $t->status() == 'Done' ? 'btn-danger' : 'btn-success' }}  btn-sm">
-                                        {{ $t->status() == 'Done' ? 'Uncheck' : 'Approve' }} 
+                                        {{ $t->status() == 'Done' ? 'Uncheck' : 'Done' }} 
                                     </a>
                                 </td>
                             </tr>

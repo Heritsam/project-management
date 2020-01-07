@@ -82,11 +82,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="card shadow">
-            <div class="card-body">
 
+            <div class="col-md-12">
                 @if (session('status'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('status') }}
@@ -95,33 +92,29 @@
                         </button>
                     </div>
                 @endif
-                
-                <div class="row justify-content-center py-5">
-                    <div class="col-md-4 text-center">
-                        <div class="icon icon-shape bg-gradient-blue text-white rounded-circle shadow">
-                            <i class="fa fa-percentage"></i>
-                        </div>
-                        <div class="py-3">
-                            <span class="font-weight-bold">
-                                {{ $project->done_percentage() }}
-                            </span>
-                            Done
-                        </div>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                            <i class="fa fa-project-diagram"></i>
-                        </div>
-                        <div class="py-3">
-                            {{ $project->timelines->count() . Str::plural(" Timeline", $project->timelines->count()) }}
+            </div>
+
+            <div class="col-md-8">
+                <div class="card bg-gradient-default shadow">
+                    <div class="card-body">
+                        <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
+                        <h2 class="text-white">Contributes</h2>
+                        
+                        <div id="chart">
+                            {!! $chart->container() !!}
                         </div>
                     </div>
-                    <div class="col-md-4 text-center">
-                        <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow">
-                            <i class="fa fa-users"></i>
-                        </div>
-                        <div class="py-3">
-                            {{ $project->contributors->count() . Str::plural(" Contributor", $project->contributors->count()) }}
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card bg-white shadow">
+                    <div class="card-body">
+                        <h6 class="text-uppercase text-light ls-1 mb-1">Overall</h6>
+                        <h2 class="text-black">Total Timelines</h2>
+
+                        <div id="chart">
+                            {!! $pieChart->container() !!}
                         </div>
                     </div>
                 </div>
@@ -130,3 +123,7 @@
     </div>
 @endsection
 
+@push('js')
+{!! $chart->script() !!}
+{!! $pieChart->script() !!}
+@endpush

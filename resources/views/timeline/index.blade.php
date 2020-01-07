@@ -72,4 +72,11 @@
             }
         });
     </script>
+
+    <script>
+        @foreach ($timelines as $t)
+            $('#more_info{{ $t->id }}').hide();
+            $('#add_child{{ $t->id }}').hide();
+        @endforeach
+    </script>
 @endpush
